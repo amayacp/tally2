@@ -52,150 +52,121 @@
             color: black;
         }
     </style>
-     <div class="row container-fluid p-0 mx-0" >
-        <div class="col-sm-1 m-0  p-0"></div>
-        <div class="col-sm-10 m-0 p-0" style=" width: 100%; background-color:rgba(0,0,0,0.2);" >
+
+<div class="row container-fluid p-0 mx-0" >
+    <div class="col-sm-1 m-0  p-0"></div>
+    <div class="col-sm-10 m-0 p-0" style=" width: 100%; background-color:rgba(0,0,0,0.2);" >
+   <!--     <a href="javascript:history.go(-1);" class="close">+</a> -->
+   
+
+
 
         <div>
-            <h6  class="bg-info text-light m-0 p-2">Ledger Monthly Summary</h6>
+            <h6  class="bg-info text-light m-0 p-2">Ledger Voucher</h6>
             <div class="row container-fluid p-3 m-0 back">
         
-            <div class="col-sm-2   m-0 p-0 d-flex" >
-             
-                <h4>Particulers</h4>
+            <div class="col-sm-2   m-0 p-0 d-flex">
+                <p>Ledger : {{ vch.iparticular }}</p>
+                <h6></h6>
             </div>
-            <div class="col-sm-3   m-0 p-0" ></div>
-            <div class="col-sm-2   m-0 p-0" style="text-align: center;">
-                <p style="padding-left: 30px;">{{ vch.iparticular }}</p>
-                <p style="padding-left: 30px;"><b>info</b></p>
-                <h6 style="padding-left: 30px;">For 1-Apr-22</h6>
-                <p style="padding-left: 30px;">Transactions</p>
+            <div class="col-sm-8   m-0 p-0"></div>
+            <div class="col-sm-2   m-0 p-0">
+                <h6> 1-Apr-22 to 30-Apr-22</h6>
             </div>
 
             </div>
 
             <div style="overflow: scroll ;max-height: 70vh; width: 100%;background-color:rgba(0,0,0,0.4); ">
-              <table  class="table " style="background-color: rgba(33,57,77,255);color:#fff; " border="1" id="tb1">
-                <tr >
-                    
-                    
-                    <th>     <table   style="width: 100%;"  id="table">
-                        <thead>
-                    <tr>
-                       
+                <table  class="table " style="background-color: rgba(33,57,77,255);color:#fff; " border="1" id="tb1">
+                    <tr >
                         
-                       <th></th>
-                       
-                        <th scope="col" class="col-sm3 m-0 p-0" style="text-align: center;"> Credit &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                         Debit  </th>
-                         <th class="col-sm2 m-0 p-0">Closing Balances</th>
-                       
-                      
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="col">Opening Balance</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                     
-                      
-                      <tr class="tr1">
-                      
                         
-                        <td scope="row"><a href="{% url 'incledgervoucher' vch.id  %}">April</a></td>
-                        <td class="col-sm-2 m-0 p-0" style="text-align: center;">{{ vch.icredit }}  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ vch.idebit }}Dr
-                       </td>
+                        <th>     <table   style="width: 100%;"  id="table">
+                            <thead>
+                    <tr style="text-align: center;">
+                        <th scope="col">Date </th>
                        
-                       <td>{{ clsum }}Dr</td>
+                       
+                        <th scope="col">Particulers</th>
+                        <th scope="col">Vch Type </th>
+                        <th scope="col">Vch No </th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
 
                       
-                      </tr></a>
-                      <tr class="tr1">
-                        <td>May</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr class="tr1">
-                        <td >June</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr class="tr1">
-                        <td>July</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr class="tr1">
-                        <td>August</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr class="tr1">
-                        <td>February</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr class="tr1">
-                        <td>September</td>
-                        <td></td>
-                        <td></td>
+
+                     
+                       
+                      <tr  style="text-align: center;" class="tr1" >
+
+                          <td scope="row">{{ vch.ivdate }}</td>
+                          
+                          <td class=" dropdown " >{{ vch.iaccount }}
+
+                        
+                          </td>
+                          <td scope="row">{{ vch.ivouchertype }}</td>
+                          <td scope="row">{{ vch.ivoucherno }}</td>
+                          <td scope="row">{{ vch.idebit }}Dr</td>
+                          <td scope="row">{{ vch.icredit }}</td>
+                          <td>
+
+                              
+                          </td>
+
+                   
+                   
                       </tr>
                       <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                       
                       </tr>
-                     
-                      <tr>
-                        <th>Grand Total</th>
-                        <td style="text-align: center;">{{ sum1 }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ sum2 }}Dr</td>
-                        
-                        <td>{{ clsum }}Dr</td>
-                        
+                      <tr >
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Opening Balance :<br>current Total : <br><b>Closing Balance :</b></td>
+                        <td scope="row" style="text-align: center;"><br>{{ sum2 }}Dr<br><b>{{ sum2 }}Dr</b></td>
+                        <td style="text-align: center;"><br> {{ sum1 }} <br><b>{{ sum1 }}</b></td>
                       </tr>
-                    
-                     
                    
                       
                       
-                    
+                      
                      
                       
 
-              
                     </tbody>
-                  </table>
-              </th>
-                
-                
-  
-                  </table>
+                </table>
+            </th>
+              
+              
 
+                </table>
 
             </div>
        
         </div> 
-        </div>
-     </div>
-     
-    
-     <br><br><br>
+    </div></div>
+    <br><br>
+    <div class="bottom text-center d-flex justify-content-between">
+        <button class="btn border"><a href="{% url 'trialbalance' %}">QUIT</a></button>
         
-        <div class="bottom text-center d-flex justify-content-between">
-            <button class="btn border"><a href="{% url 'trialbalance' %}">QUIT</a></button>
-            
-            <button type="button" class="btn border" onclick="myFunction()">SELECT</button>
-           
-          
-            <button class="btn border"  onclick="removeSelectedRow()">REMOVE LINE</button>
-            <button class="btn border"><a href="{% url 'groupsummery' %}">RESTORE LINE</a></button>
-        </div>
-    
-    
+        <button type="button" class="btn border" onclick="myFunction()">SELECT</button>
+       
+        <button class="btn border">DELETE</button>
+        <button class="btn border"  onclick="removeSelectedRow()">REMOVE LINE</button>
+        <button class="btn border"><a href="{% url 'loanledgervoucher' vch.id  %}">RESTORE LINE</a></button>
     </div>
-
     <script>
         $(document).ready(function($) {
             $(".table-row").dblclick(function() {
@@ -289,4 +260,4 @@
     </script>
     {% endblock %}
     
-  
+   

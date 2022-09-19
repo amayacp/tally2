@@ -39,17 +39,17 @@ urlpatterns = [
     path('ex',views.ex,name='ex'),
     path('voucher2',views.voucher2,name='voucher2'),
 
-    path('inincvouchadd',views.inincvouchadd,name='inincvouchadd'),
+    path('loanvouchadd',views.loanvouchadd,name='loanvouchadd'),
     path('voucher3',views.voucher3,name='voucher3'),
 
-    path('ininxvouchadd',views.ininxvouchadd,name='ininxvouchadd'),
-    path('incgroupsummary',views.incgroupsummary,name='incgroupsummary'),
-    path('incledgersummary/<int:pk>',views.incledgersummary,name='incledgersummary'),
-    path('incledgervoucher/<int:pk>',views.incledgervoucher,name='incledgervoucher'),
-     path('inxgroupsummary',views.inxgroupsummary,name='inxgroupsummary'),
-    path('inxgroup',views.inxgroup,name='inxgroup'),
-    path('inxledgersummary/<int:pk>',views.inxledgersummary,name='inxledgersummary'),
-    path('inxledgervoucher/<int:pk>',views.inxledgervoucher,name='inxledgervoucher')
+    path('cvouchadd',views.cvouchadd,name='cvouchadd'),
+    path('loangroupsummary',views.loangroupsummary,name='loangroupsummary'),
+    path('loanledgersummary/<int:pk>',views.loanledgersummary,name='loanledgersummary'),
+    path('loanledgervoucher/<int:pk>',views.loanledgervoucher,name='loanledgervoucher'),
+     path('cgroupsummary',views.cgroupsummary,name='cgroupsummary'),
+    path('cgroup',views.cgroup,name='cgroup'),
+    path('cledgersummary/<int:pk>',views.cledgersummary,name='cledgersummary'),
+    path('cledgervoucher/<int:pk>',views.cledgervoucher,name='cledgervoucher')
 
 
 

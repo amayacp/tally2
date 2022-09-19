@@ -52,26 +52,24 @@
             color: black;
         }
     </style>
-
-<div class="row container-fluid p-0 mx-0" >
-    <div class="col-sm-1 m-0  p-0"></div>
-    <div class="col-sm-10 m-0 p-0" style=" width: 100%; background-color:rgba(0,0,0,0.2);" >
-   <!--     <a href="javascript:history.go(-1);" class="close">+</a> -->
-   
-
-
+     <div class="row container-fluid p-0 mx-0" >
+        <div class="col-sm-1 m-0  p-0"></div>
+        <div class="col-sm-10 m-0 p-0" style=" width: 100%; background-color:rgba(0,0,0,0.2);" >
 
         <div>
-            <h6  class="bg-info text-light m-0 p-2">Ledger Voucher</h6>
+            <h6  class="bg-info text-light m-0 p-2">Group Summary</h6>
             <div class="row container-fluid p-3 m-0 back">
         
-            <div class="col-sm-2   m-0 p-0 d-flex">
-                <p>Ledger : {{ vch.particular }}</p>
-                <h6></h6>
+            <div class="col-sm-2   m-0 p-0 d-flex" >
+             
+                <h4>Particulers</h4>
             </div>
             <div class="col-sm-8   m-0 p-0"></div>
-            <div class="col-sm-2   m-0 p-0">
-                <h6> 1-Apr-22 to 30-Apr-22</h6>
+            <div class="col-sm-2   m-0 p-0"style="text-align: center;">
+                <p>Loans</p>
+                <p><b>info</b></p>
+                <h6>For 1-Apr-22</h6>
+                <p>Closing Balances</p>
             </div>
 
             </div>
@@ -83,68 +81,49 @@
                         
                         <th>     <table   style="width: 100%;"  id="table">
                             <thead>
-                             
-                    <tr style="text-align: center;">
-                        <th scope="col">Date </th>
+                                <tr>
                        
+                        <th scope="col"><a >Name</a></th>
                        
-                        <th scope="col">Particulers</th>
-                        <th scope="col">Vch Type </th>
-                        <th scope="col">Vch No </th>
-                        <th>Debit</th>
-                        <th>Credit</th>
-                        
+                        <th scope="col" class="col-sm-2 m-0 p-0" style="text-align: center;"> Credit &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         Debit</th>
+                       
                       
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                     {% for vouch in vouch %}
                      
-                    </tr>
-                </thead>
-                <tbody>
-
-                      <tr  style="text-align: center;" class="tr1" >
-
-                          <td scope="row">{{ vch.vdate }}</td>
-                          
-                          <td class=" dropdown " >{{ vch.account }}
+                      <tr  class="tr1">
+                        
+                        <td scope="row"><a  href="{% url 'loanledgersummary' vouch.id  %}">{{ vouch.iparticular }}</a></td>
+                        <td class="col-sm-2 m-0 p-0" style="text-align: center;">{{ vouch.icredit }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ vouch.idebit }}Dr
+                       </td>
+                       
+                    
 
                         
-                          </td>
-                          <td scope="row">{{ vch.vouchertype }}</td>
-                          <td scope="row">{{ vch.voucherno }}</td>
-                          <td scope="row">{{ vch.debit }}Dr</td>
-                          <td scope="row">{{ vch.credit }}</td>
-                          <td>
 
-                              
-                          </td>
-
-                   
+                       
                    
                       </tr>
-                     
+                      {% endfor %} 
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                       
                       </tr>
-                      <tr >
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Opening Balance :<br>current Total :<br><b>Closing Balance :</b></td>
-                        <td scope="row" style="text-align: center;"><br>{{ sum2 }}Dr<br><b>{{ cltot }}Dr</b></td>
-                        <td style="text-align: center;"> {{ sum3 }}Cr<br><br><b>{{ sum1 }}</b></td>
+                      <tr>
+                        <td>Grand Total</td>
+                        <td class="col-sm-2 m-0 p-0" style="text-align: center;">{{ sum1 }}  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ sum2 }}Dr</td>
+                        
                       </tr>
-                   
-                      
-                      
                       
                      
-                      
+                   
+                     
 
+                
                     </tbody>
                 </table>
             </th>
@@ -158,17 +137,23 @@
             </div>
        
         </div> 
-    </div></div>
-     <br><br>
-    <div class="bottom text-center d-flex justify-content-between">
-        <button class="btn border"><a href="{% url 'trialbalance' %}">QUIT</a></button>
+        </div>
+     </div>
+     <br><br><br>
         
-        <button type="button" class="btn border" onclick="myFunction()">SELECT</button>
-       
-        <button class="btn border">DELETE</button>
-        <button class="btn border"  onclick="removeSelectedRow()">REMOVE LINE</button>
-        <button class="btn border"><a href="{% url 'ledgervoucher' vch.id  %}">RESTORE LINE</a></button>
+        <div class="bottom text-center d-flex justify-content-between">
+            <button class="btn border"><a href="{% url 'trialbalance' %}">QUIT</a></button>
+            
+            <button type="button" class="btn border" onclick="myFunction()">SELECT</button>
+           
+          
+            <button class="btn border"  onclick="removeSelectedRow()">REMOVE LINE</button>
+            <button class="btn border"><a href="loangroupsummary">RESTORE LINE</a></button>
+        </div>
+    
+    
     </div>
+
     <script>
         $(document).ready(function($) {
             $(".table-row").dblclick(function() {
@@ -261,5 +246,3 @@
             }
     </script>
     {% endblock %}
-    
-   

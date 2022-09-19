@@ -135,8 +135,10 @@
                         <td></td>
                         <td></td>
                         <td>Opening Balance :<br>current Total : <br><b>Closing Balance :</b></td>
-                        <td scope="row" style="text-align: center;"><br>{{ sum2 }}Dr<br><b>{{ sum2 }}Dr</b></td>
-                        <td style="text-align: center;"><br> {{ sum1 }} <br><b>{{ sum1 }}</b></td>
+                        
+                        
+                        <td scope="row" style="text-align: center;"><br>{{ sum2 }}Dr<br><b>{{ cltot }}Dr</b></td>
+                        <td style="text-align: center;">{{ sum3 }}Cr<br><br><b>{{ sum1 }}Cr</b></td>
                       </tr>
                    
                       
@@ -153,6 +155,7 @@
 
                 </table>
 
+
             </div>
        
         </div> 
@@ -165,7 +168,99 @@
        
         <button class="btn border">DELETE</button>
         <button class="btn border"  onclick="removeSelectedRow()">REMOVE LINE</button>
-        <button class="btn border"><a href="{% url 'ledgervoucher' vch.id  %}">RESTORE LINE</a></button>
+        <button class="btn border"><a href="{% url 'cledgervoucher' vch.id  %}">RESTORE LINE</a></button>
     </div>
+    <script>
+        $(document).ready(function($) {
+            $(".table-row").dblclick(function() {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
+    <script>
+                
+        var index;  // variable to set the selected row index
+        function getSelectedRow()
+        {
+            var table = document.getElementById("table");
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].onclick = function()
+                {
+                    // clear the selected from the previous selected row
+                    // the first time index is undefined
+                    if(typeof index !== "undefined"){
+                        table.rows[index].classList.toggle("selected");
+                    }
+                   
+                    index = this.rowIndex;
+                    this.classList.toggle("selected");
     
-{% endblock %}
+                };
+            }
+                
+        }
+    
+    
+        getSelectedRow();
+    
+        
+    
+        
+        
+        
+        
+    </script>
+    
+    <script>
+    
+       
+    function myFunction() {
+     var se = document.getElementsByClassName('selected');
+     se[0].style.backgroundColor = "lightblue";
+        
+    }
+        </script>
+    
+    
+    <!-- <script>
+            
+            var rIndex,
+                table = document.getElementById("table");
+            
+            
+            function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      // get the seected row index
+                      rIndex = this.rowIndex;
+                      this.classList.toggle("selected");
+                    
+                    };
+                }
+            }
+            selectedRowToInput();
+            
+            
+            
+            function removeSelectedRow()
+            {
+                table.deleteRow(rIndex);
+                
+            }
+        </script> -->
+    
+    <script>
+    function removeSelectedRow()
+            {
+                table.deleteRow(index);
+                
+            }
+    </script>
+    {% endblock %}
+    
+   

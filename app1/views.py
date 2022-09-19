@@ -437,9 +437,9 @@ def ex(request):
 
 def voucher2(request):
     ledg=ledgercreation.objects.all()
-    return render(request,'inincvoucher.html',{'ledg':ledg})    
+    return render(request,'loanvoucher.html',{'ledg':ledg})    
 
-def inincvouchadd(request):
+def loanvouchadd(request):
     if request.method == 'POST':
         ivdate=request.POST['ivdate']
         iparticular=request.POST['iparticular']
@@ -466,7 +466,7 @@ def inincvouchadd(request):
         voui.save()
         return redirect('voucher3')
 
-def incgroupsummary(request): 
+def loangroupsummary(request): 
     vouch=inincvouchert.objects.filter()
 
     sum1=0
@@ -478,9 +478,9 @@ def incgroupsummary(request):
         sum2+=b.idebit
 
     context={'vouch':vouch,'sum1':sum1,'sum2':sum2}    
-    return render(request,'incgroupsummary.html',context)
+    return render(request,'loangroupsummary.html',context)
 
-def incledgersummary(request,pk):
+def loanledgersummary(request,pk):
     vch=inincvouchert.objects.get(id=pk)
     vouch=inincvouchert.objects.filter(id=pk)
 
@@ -497,10 +497,10 @@ def incledgersummary(request,pk):
     clsum=sum1+sum2       
         
     context={'vch':vch,'vouch':vouch,'sum1':sum1,'sum2':sum2,'clsum':clsum}   
-    return render(request,'incledgersummary.html',context) 
+    return render(request,'loanledgersummary.html',context) 
 
 
-def incledgervoucher(request,pk):
+def loanledgervoucher(request,pk):
     vch=inincvouchert.objects.get(id=pk)
     vouch=inincvouchert.objects.filter(id=pk)
 
@@ -514,7 +514,7 @@ def incledgervoucher(request,pk):
         sum2+=b.idebit 
 
     context={'vch':vch,'vouch':vouch,'sum1':sum1,'sum2':sum2}     
-    return render(request,'incledgervoucher.html',context)    
+    return render(request,'loanledgervoucher.html',context)    
 
 
 
@@ -523,9 +523,9 @@ def incledgervoucher(request,pk):
 
 def voucher3(request):
     ledg=ledgercreation.objects.all()
-    return render(request,'ininxvoucher.html',{'ledg':ledg})    
+    return render(request,'cvoucher.html',{'ledg':ledg})    
 
-def ininxvouchadd(request):
+def cvouchadd(request):
     if request.method == 'POST':
         ivdate=request.POST['ivdate']
         iparticular=request.POST['iparticular']
@@ -553,7 +553,7 @@ def ininxvouchadd(request):
         voui.save()
         return redirect('voucher3')     
 
-def inxgroup(request):
+def cgroup(request):
     grp=GroupModel.objects.all()
     vouch=ininxvouchert.objects.all()
     sum1=0
@@ -574,9 +574,9 @@ def inxgroup(request):
 
     context={'vouch':vouch,'grp':grp,'sum1':sum1,'sum2':sum2,'sum3':sum3,'clsum':clsum,'cltot':cltot}        
 
-    return render(request,'inxgroup.html',context)  
+    return render(request,'cgroup.html',context)  
 
-def inxgroupsummary(request):
+def cgroupsummary(request):
     vouch=ininxvouchert.objects.all()
     sum1=0
     sum2=0
@@ -596,10 +596,10 @@ def inxgroupsummary(request):
 
     context={'vouch':vouch,'sum1':sum1,'sum2':sum2,'sum3':sum3,'clsum':clsum,'cltot':cltot}        
 
-    return render(request,'inxgroupsummary.html',context)  
+    return render(request,'cgroupsummary.html',context)  
 
 
-def inxledgersummary(request,pk):
+def cledgersummary(request,pk):
     vch=ininxvouchert.objects.get(id=pk)
     vouch=ininxvouchert.objects.filter(id=pk)
 
@@ -621,9 +621,9 @@ def inxledgersummary(request,pk):
 
 
     context={'vch':vch,'vouch':vouch,'sum1':sum1,'sum2':sum2,'clsum':clsum,'cltot':cltot}
-    return render(request,'inxledgersummary.html',context)
+    return render(request,'cledgersummary.html',context)
 
-def inxledgervoucher(request,pk):
+def cledgervoucher(request,pk):
     vch=ininxvouchert.objects.get(id=pk)
     vouch=ininxvouchert.objects.filter(id=pk)
 
@@ -642,7 +642,7 @@ def inxledgervoucher(request,pk):
     cltot=clsum-sum3   
 
     context={'vch':vch,'sum1':sum1,'sum2':sum2,'sum3':sum3,'clsum':clsum,'cltot':cltot}
-    return render(request,'inxledgervoucher.html',context)
+    return render(request,'cledgervoucher.html',context)
 
 
 
